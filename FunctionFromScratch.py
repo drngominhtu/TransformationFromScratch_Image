@@ -65,11 +65,23 @@ def powerfunc(img, index):
     return matrixzeros
 
 
+def rootfunc(img, index):
+    height, width = img.shpae[:2]
+    matrixzeros = np.zeros((height, width), dtype=np.uint8)
+    for i in range(height):
+        for j in range(width):
+            singlepixel = img[i,j]
+            newpixel = index * (singlepixel ** (1/index))
+            matrixzeros[i, j] = newpixel
+    return matrixzeros
+
+
 newimglog = logtransformfunc(img, 90)
 newimgThreshold = thresholdfunc(img, 127)
 newimgIdentity = indentityfunc(img)
 newimgnegative = negativefunc(img)
 newimgpower = powerfunc(img, 4)
+newimgroot = rootfunc(img, 2)
 
 
 cv.imshow("after log transform", newimglog)
@@ -77,5 +89,5 @@ cv.imshow("after threshold", newimgThreshold)
 cv.imshow("after identity", newimgIdentity)
 cv.imshow ("after negative", newimgnegative)
 cv.imshow("after power", newimgpower)
-
+cv.imshow("after root", newimgroot)
 cv.waitKey(0)
