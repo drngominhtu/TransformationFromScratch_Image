@@ -1,8 +1,8 @@
 import cv2 as cv
 import numpy as np   
 import math
-img = cv.imread("img1.jpg", cv.IMREAD_GRAYSCALE) #link to input picture
-
+#img = cv.imread("img1.jpg", cv.IMREAD_GRAYSCALE) #link to input picture
+img = cv.imread("contrast.png", cv.IMREAD_GRAYSCALE)
 def logtransformfunc(img, index):
     height, width = img.shape[:2]
     matrixzeros = np.zeros((height, width), dtype = np.uint8)
@@ -90,4 +90,6 @@ cv.imshow("after identity", newimgIdentity)
 cv.imshow ("after negative", newimgnegative)
 cv.imshow("after power", newimgpower)
 cv.imshow("after root", newimgroot)
+
+
 cv.waitKey(0)
