@@ -51,7 +51,7 @@ def negativefunc(img):
             newpixel = 255 - singlepixel
             matrixzeros[i, j] = newpixel
     return matrixzeros
-cv.imshow("Original img", img)
+
 
 
 def powerfunc(img, index):
@@ -66,7 +66,7 @@ def powerfunc(img, index):
 
 
 def rootfunc(img, index):
-    height, width = img.shpae[:2]
+    height, width = img.shape[:2]
     matrixzeros = np.zeros((height, width), dtype=np.uint8)
     for i in range(height):
         for j in range(width):
@@ -83,7 +83,7 @@ newimgnegative = negativefunc(img)
 newimgpower = powerfunc(img, 4)
 newimgroot = rootfunc(img, 2)
 
-
+cv.imshow("Original img", img)
 cv.imshow("after log transform", newimglog)
 cv.imshow("after threshold", newimgThreshold)
 cv.imshow("after identity", newimgIdentity)
