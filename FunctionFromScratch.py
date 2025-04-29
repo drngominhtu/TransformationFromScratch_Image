@@ -1,19 +1,38 @@
 import cv2 as cv
 import numpy as np   
 import math
-#img = cv.imread("img1.jpg", cv.IMREAD_GRAYSCALE) #link to input picture
-img = cv.imread("contrast.png", cv.IMREAD_GRAYSCALE)
+img = cv.imread("img1.jpg", cv.IMREAD_GRAYSCALE) #link to input picture
+#img = cv.imread("contrast.png", cv.IMREAD_GRAYSCALE)
+
+
+
 def logtransformfunc(img, index):
     height, width = img.shape[:2]
     matrixzeros = np.zeros((height, width), dtype = np.uint8)
     
-
     for i in range(height):
         for j in range(width):
             singlepixel = img[i, j]
             newpixel = index * math.log(1 + singlepixel)
             matrixzeros[i, j] = newpixel
     return matrixzeros
+
+
+def logtransformfunc2(img, r1, r2):
+    height, width = img.shape[:2]
+    matrixzeros = np.zeros((height, width), dtype = np.uint8)
+    for i in range(height):
+        for j in range(width):
+            singlepixel = img[i, j]
+            if singlepixel < r1:
+                newpixel = 0
+            elif singlepixel > r2:
+                newpixel = 255
+            else:
+                newpixel = (singlepixel - r1) * (255 / (r2 - r1))
+                matrixzeros[i, j] = newpixel            
+    return matrixzeros
+
 
 
 def thresholdfunc(img, index):
@@ -76,12 +95,16 @@ def rootfunc(img, index):
     return matrixzeros
 
 
+
+
 newimglog = logtransformfunc(img, 90)
 newimgThreshold = thresholdfunc(img, 127)
 newimgIdentity = indentityfunc(img)
 newimgnegative = negativefunc(img)
 newimgpower = powerfunc(img, 4)
 newimgroot = rootfunc(img, 2)
+newimglog2 = logtransformfunc2(img, 100, 200)
+
 
 cv.imshow("Original img", img)
 cv.imshow("after log transform", newimglog)
@@ -90,6 +113,6 @@ cv.imshow("after identity", newimgIdentity)
 cv.imshow ("after negative", newimgnegative)
 cv.imshow("after power", newimgpower)
 cv.imshow("after root", newimgroot)
-
+cv.imshow("after log2", newimglog2)
 
 cv.waitKey(0)

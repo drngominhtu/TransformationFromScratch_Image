@@ -21,6 +21,10 @@
 # inverse log: s = c * exp(r) -> tăng độ tương phản cho ảnh sáng
 # inverse gamma: s = c * r^(1/gamma) -> tăng độ tương phản cho ảnh sáng
 # root: s = c * r^(1/gamma) -> tăng độ tương phản cho ảnh sáng
+# histogram equalization/streching: s = c * r^(1/gamma) -> tăng độ tương phản cho ảnh sáng
+
+
+
 
 import cv2 as cv
 import numpy as np
