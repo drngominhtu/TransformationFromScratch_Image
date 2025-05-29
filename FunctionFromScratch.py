@@ -95,7 +95,7 @@ def rootfunc(img, index):
     return matrixzeros
 
 
-def logtransformfunc4(img, min_val, max_val, c):
+def logtransformfunc4(img, min_val, max_val, c): #handling log transform with min and max values
     height, width = img.shape[:2]
     matrixzeros = np.zeros((height, width), dtype=np.uint8)
     
@@ -126,7 +126,7 @@ newimglog4 = logtransformfunc4(img, 50, 100, -10)
 
 
 cv.imshow("Original img", img)
-# cv.imshow("after log transform", newimglog)
+cv.imshow("after log transform", newimglog)
 # cv.imshow("after threshold", newimgThreshold)
 # cv.imshow("after identity", newimgIdentity)
 # cv.imshow ("after negative", newimgnegative)
@@ -134,7 +134,7 @@ cv.imshow("Original img", img)
 # cv.imshow("after root", newimgroot)
 # cv.imshow("after log2", newimglog2)
 # cv.imshow("after log3", newimglog3)
-cv.imshow("after log4", newimglog4)
+#cv.imshow("after log4", newimglog4)
 
 
 
