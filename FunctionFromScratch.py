@@ -113,7 +113,7 @@ def logtransformfunc4(img, min_val, max_val, c): #handling log transform with mi
     
     return matrixzeros
 
-newimglog = logtransformfunc(img, 90)
+newimglog = logtransformfunc(img, 90) #90 is the index for log transform, can be changed to any value
 newimgThreshold = thresholdfunc(img, 127)
 newimgIdentity = indentityfunc(img)
 newimgnegative = negativefunc(img)
